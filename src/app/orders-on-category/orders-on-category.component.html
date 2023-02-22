@@ -1,0 +1,21 @@
+
+<select #categoryName>
+    <option> plant </option>
+    <option> planter </option>
+    <option> seed </option>
+</select>
+<input type="date" id="serchDate">
+<button (click)="getOrders(categoryName.value)">Load Orders</button>
+
+
+<div *ngFor="let p of allOrders">
+    <div> {{p.bookingOrderId}}</div>
+    <div> {{p.orderDate}}</div>
+    <div> {{p.totalCost}}</div>
+    <div> {{p.customerId}}</div>
+    <div> {{p.productId}}</div>
+    <div> {{p.category}}</div>
+    <div>{{p.transactionMode}}</div>
+    <div>{{p.quantity}}</div><br/>
+    <hr/>
+</div>

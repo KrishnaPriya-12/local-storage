@@ -1,0 +1,36 @@
+<div *ngFor="let p of allProducts">
+    <table>
+        <tr>
+            <td> <img src="/assets/images/{{p.imageName}}" alt="Product image" width="120px" height="150px"> </td>
+            <td> 
+                <h2>{{p.productId}}</h2>
+                <h2>{{p.productName}} </h2>
+                <b>{{p.category}}</b>
+                <b>{{p.bloomSeason}}</b>
+                <p> {{p.about}} </p>
+                <hr/>
+                <span>Product Price <span [style]="p.price<75?priceLowCss:priceNormalCSS" >{{p.price|currency}}    </span>  
+                    <i *ngIf="p.discount>0"> 
+                        with {{p.discount}}% Off 
+                        <span *ngIf="p.discount>9">
+                            <b style="color: blue; font-family: Georgia, 'Times New Roman', Times, serif;"><u> Recommended</u></b>
+                        </span>
+                    </i> 
+            
+                </span> 
+                <br/>
+                Planter Height {{p.height}} cm
+                Star Rating {{p.starRating}}
+                <hr/>
+                <button value="Add Product" (click)="placeOrder(p.productId,p.productName,p.category,p.bloomSeason,p.about,p.price,p.discount,p.height,p.starRating)" #product> Place Order </button>
+                <button value="{{p.productId}}" (click)="addWatchlist(product.value)" #product> Add to Watchlist </button>
+                <br/>
+                <button value="{{p.productId}}" (click)="viewProductDetails(product.value)" #product> View Details</button>
+                    
+                
+            </td>
+            
+        </tr>
+    </table>
+    </div>
+    
